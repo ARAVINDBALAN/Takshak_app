@@ -1,9 +1,13 @@
 package takshak.mace.takshak2k18;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.InflateException;
@@ -22,13 +26,17 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setBackgroundColor(Color.GREEN);
+        toolbar.setBackgroundColor(getColor(R.color.blue));
+        toolbar.setTitleTextColor(Color.WHITE);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -102,6 +110,17 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.locate) {
             //locate in maps
+            double latitude = 10.053952;
+            double longitude = 76.619336;
+            String label = "We are Here !";
+            String uriBegin = "geo:" + latitude + "," + longitude;
+            String query = latitude + "," + longitude + "(" + label + ")";
+            String encodedQuery = Uri.encode(query);
+            String uriString = uriBegin + "?q=" + encodedQuery + "&z=5";
+            Uri uri = Uri.parse(uriString);
+            Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(mapIntent);
+
         } else if (id ==R.id.facebook){
             //facebook
         }

@@ -25,9 +25,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.AppBarOverlay" />
+        <activity android:name=".logoption"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.AppBarOverlay"/>
     </application>
 
 </manifest>
