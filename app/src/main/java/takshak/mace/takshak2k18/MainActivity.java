@@ -2,6 +2,7 @@ package takshak.mace.takshak2k18;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -22,21 +23,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static takshak.mace.takshak2k18.R.color.black;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @TargetApi(Build.VERSION_CODES.M)
     @RequiresApi(api = Build.VERSION_CODES.M)
+    String geturl="https://demo4664908.mockable.io/happy";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setBackgroundColor(getColor(R.color.blue));
+        toolbar.setBackgroundColor(Color.blue(200));
         toolbar.setTitleTextColor(Color.WHITE);
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -100,7 +105,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.login) {
             // login activity
-            Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+            Intent i = new Intent(getApplicationContext(),profile.class);
             startActivity(i);
 
 
@@ -128,6 +133,9 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void get(View v){
+        Toast.makeText(this,"sss",Toast.LENGTH_SHORT).show();
     }
 
 }
